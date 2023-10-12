@@ -9,7 +9,7 @@ A couple of samples from each domain are shown in the below figure. To explore a
 
 
 
-- Final-Project:
+## Final-Project:
 Design a model that takes a 3x32x32 image and a (256, ) feature vector for each sample, which has a digit label and a domain label and predicts the digit label using cross entropy and tripelt loss:
 $$L_{T} = L_{Cross Entropy} + \lambda L_{triplet}(A, P, N)$$
 where $A$ is anchor sample, $P$ and $N$ are positive and negative pairs (see `batch_hard_triplet_loss()` in `phase4.py` for more details on how positive and negative pairs are defined).
