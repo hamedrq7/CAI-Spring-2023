@@ -1,5 +1,9 @@
 # Feature Selection for Phase 3
 
+<p align="center">
+  <img src="images/imge10.png" alt="feature_selection" width="400">
+</p>
+
 ## Overview
 
 This project focuses on feature selection for Phase 3 and aims to provide a clear and efficient process for working with the SYN dataset. Feature selection is crucial in machine learning projects, and this project guides you through the process.
