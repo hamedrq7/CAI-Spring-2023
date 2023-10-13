@@ -80,17 +80,23 @@ To use this project, follow these steps:
 
 3. Use the feature selection process that is implemented in [phase_3_code.ipynb]([link-to-phase_3_code.ipynb](https://github.com/hamedrq7/CAI-Spring-2023/blob/main/Third-Project%3A%20Feature%20Selection/phase_3_code.ipynb)).
 
-<div style="text-align:center"><img src="images/imge3.png" alt="how_to_select" width="400"></div>
+<p align="center">
+  <img src="images/imge3.png" alt="how_to_select" width="400">
+</p>
 
 4. Use the code in [network.ipynb]([link-to-network.ipynb](https://drive.google.com/file/d/11XSW5M5SPO6Ld_ofVkzMSQzpdRyHlfds/view?usp=sharing)) to set up and implement your network.
 
-<div style="text-align:center"><img src="images/imge1.png" alt="network" width="400"></div>
+<p align="center">
+  <img src="images/imge1.png" alt="network" width="400">
+</p>
 
 ## Data
 
 The SYN dataset, also known as the **SYN Digits Dataset**, is a well-known dataset consisting of images of handwritten digits. This dataset is widely used in the machine learning and computer vision communities for tasks such as digit recognition and classification.
 
-<div style="text-align:center"><img src="images/imge4.png" alt="SYN_Dataset" width="400"></div>
+<p align="center">
+  <img src="images/imge4.png" alt="SYN_Dataset" width="400">
+</p>
 
 **Dataset Details:**
 
