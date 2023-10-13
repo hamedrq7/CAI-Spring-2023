@@ -48,7 +48,7 @@ To use this project, follow these steps:
 ## Data
 
 The SYN dataset, also known as the **SYN Digits Dataset**, is a well-known dataset consisting of images of handwritten digits. This dataset is widely used in the machine learning and computer vision communities for tasks such as digit recognition and classification.
-
+![SYN Dataset](images/imge4.png)
 **Dataset Details:**
 
 - **Source:** The SYN Digits Dataset is commonly used as a benchmark dataset for various machine learning and computer vision projects. The dataset contains a collection of images of handwritten digits, which are often used for tasks like digit recognition, classification, and image processing.
