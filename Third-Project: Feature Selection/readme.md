@@ -62,7 +62,7 @@ Here's a brief explanation of the contents of this GitHub repository:
     <td align="center">
       <img src="images/imge9.png" alt="vis5" width="400">
       <br>
-      ## comparing best and worst features according to overall absolute weights in sorted view
+      ## Comparing best and worst features according to overall absolute weights in sorted view
     </td>
   </tr>
 </table>
@@ -80,17 +80,17 @@ To use this project, follow these steps:
 
 3. Use the feature selection process that is implemented in [phase_3_code.ipynb]([link-to-phase_3_code.ipynb](https://github.com/hamedrq7/CAI-Spring-2023/blob/main/Third-Project%3A%20Feature%20Selection/phase_3_code.ipynb)).
 
-![how_to_select](images/imge3.png)
+<div style="text-align:center"><img src="images/image3.png" alt="how_to_select" width="400"></div>
 
 4. Use the code in [network.ipynb]([link-to-network.ipynb](https://drive.google.com/file/d/11XSW5M5SPO6Ld_ofVkzMSQzpdRyHlfds/view?usp=sharing)) to set up and implement your network.
 
-![network](images/imge1.png)
+<div style="text-align:center"><img src="images/image1.png" alt="network" width="400"></div>
 
 ## Data
 
 The SYN dataset, also known as the **SYN Digits Dataset**, is a well-known dataset consisting of images of handwritten digits. This dataset is widely used in the machine learning and computer vision communities for tasks such as digit recognition and classification.
 
-![SYN Dataset](images/imge4.png)
+<div style="text-align:center"><img src="images/image4.png" alt="SYN_Dataset" width="400"></div>
 
 **Dataset Details:**
 
