@@ -36,31 +36,31 @@ Here's a brief explanation of the contents of this GitHub repository:
 <table>
   <tr>
     <td align="center">
-      <img src="images/imge5.jpg" alt="vis1" width="400">
+      <img src="images/imge5.png" alt="vis1" width="400">
       <br>
       Image 1
     </td>
     <td align="center">
-      <img src="images/imge6.jpg" alt="vis2" width="400">
+      <img src="images/imge6.png" alt="vis2" width="400">
       <br>
       Image 2
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="images/imge7.jpg" alt="vis3" width="400">
+      <img src="images/imge7.png" alt="vis3" width="400">
       <br>
       Image 1
     </td>
     <td align="center">
-      <img src="images/imge8.jpg" alt="vis4" width="400">
+      <img src="images/imge8.png" alt="vis4" width="400">
       <br>
       Image 2
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="images/imge9.jpg" alt="vis5" width="400">
+      <img src="images/imge9.png" alt="vis5" width="400">
       <br>
       Image 1
     </td>
