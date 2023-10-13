@@ -31,6 +31,17 @@ The complete project instructions can be found in the [CI - Spring 2023-Phase3.p
 Here's a brief explanation of the contents of this GitHub repository:
 
 - [phase_3_code.ipynb]([link-to-phase_3_code.ipynb](https://github.com/hamedrq7/CAI-Spring-2023/blob/main/Third-Project%3A%20Feature%20Selection/phase_3_code.ipynb)): Completed project code with implemented feature selection and visualizations.
+
+![vis1](images/imge5.png)
+
+![vis2](images/imge6.png)
+
+![vis3](images/imge7.png)
+
+![vis4](images/imge8.png)
+
+![vis5](images/imge9.png)
+
 - [readme.md]([link-to-readme.md](https://github.com/hamedrq7/CAI-Spring-2023/blob/main/Third-Project%3A%20Feature%20Selection/readme.md)): You're currently reading the project README.
 
 ## Usage
@@ -43,12 +54,18 @@ To use this project, follow these steps:
 
 3. Use the feature selection process that is implemented in [phase_3_code.ipynb]([link-to-phase_3_code.ipynb](https://github.com/hamedrq7/CAI-Spring-2023/blob/main/Third-Project%3A%20Feature%20Selection/phase_3_code.ipynb)).
 
+![how_to_select](images/imge3.png)
+
 4. Use the code in [network.ipynb]([link-to-network.ipynb](https://drive.google.com/file/d/11XSW5M5SPO6Ld_ofVkzMSQzpdRyHlfds/view?usp=sharing)) to set up and implement your network.
+
+![network](images/imge1.png)
 
 ## Data
 
 The SYN dataset, also known as the **SYN Digits Dataset**, is a well-known dataset consisting of images of handwritten digits. This dataset is widely used in the machine learning and computer vision communities for tasks such as digit recognition and classification.
+
 ![SYN Dataset](images/imge4.png)
+
 **Dataset Details:**
 
 - **Source:** The SYN Digits Dataset is commonly used as a benchmark dataset for various machine learning and computer vision projects. The dataset contains a collection of images of handwritten digits, which are often used for tasks like digit recognition, classification, and image processing.
