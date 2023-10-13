@@ -32,15 +32,41 @@ Here's a brief explanation of the contents of this GitHub repository:
 
 - [phase_3_code.ipynb]([link-to-phase_3_code.ipynb](https://github.com/hamedrq7/CAI-Spring-2023/blob/main/Third-Project%3A%20Feature%20Selection/phase_3_code.ipynb)): Completed project code with implemented feature selection and visualizations.
 
-![vis1](images/imge5.png)
+<!-- Create a table with one row and two columns -->
+<table>
+  <tr>
+    <td align="center">
+      <img src="images/imge5.jpg" alt="vis1" width="400">
+      <br>
+      Image 1
+    </td>
+    <td align="center">
+      <img src="images/imge6.jpg" alt="vis2" width="400">
+      <br>
+      Image 2
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="images/imge7.jpg" alt="vis3" width="400">
+      <br>
+      Image 1
+    </td>
+    <td align="center">
+      <img src="images/imge8.jpg" alt="vis4" width="400">
+      <br>
+      Image 2
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="images/imge9.jpg" alt="vis5" width="400">
+      <br>
+      Image 1
+    </td>
+  </tr>
+</table>
 
-![vis2](images/imge6.png)
-
-![vis3](images/imge7.png)
-
-![vis4](images/imge8.png)
-
-![vis5](images/imge9.png)
 
 - [readme.md]([link-to-readme.md](https://github.com/hamedrq7/CAI-Spring-2023/blob/main/Third-Project%3A%20Feature%20Selection/readme.md)): You're currently reading the project README.
 
