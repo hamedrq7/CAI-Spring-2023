@@ -58,13 +58,6 @@ Here's a brief explanation of the contents of this GitHub repository:
       Image 2
     </td>
   </tr>
-  <tr>
-    <td align="center">
-      <img src="images/imge9.png" alt="vis5" width="400">
-      <br>
-      Image 1
-    </td>
-  </tr>
 </table>
 
 
