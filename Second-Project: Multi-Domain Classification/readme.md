@@ -15,7 +15,7 @@ In the first part, you will directly classify the numbers from the dataset using
   <img src="1.png" alt="1" width="400" />
 </p
 
-### Part 1 - Digit Classification
+### 
 ### Part 2 - Domain and Digit Classification
 
 In the second part, you must first use a Random Forest algorithm to classify the domains of the data effectively. Then, you should create another Random Forest classifier for each domain, specifically for digit classification. To evaluate your model's accuracy, you will need to pass the test data through the domain classifier and use the result to classify the digit with a domain-based digit classifier. Once again, selecting the right hyperparameters is crucial, and you should prove their effectiveness.
