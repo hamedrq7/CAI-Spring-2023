@@ -2,7 +2,10 @@
 
 In this project, you will work on multi-domain classification using the Random Forest classifier. The dataset is composed of five different domains, each having classes for numbers 0 to 9. Your task involves two main steps:
 
-<img src="int.png" alt="Intro" width="500" />
+<p align="center">
+  <img src="int.png" alt="Intro" width="700" />
+</p>
+
 
 #### Part 1 - Digit Classification
 
