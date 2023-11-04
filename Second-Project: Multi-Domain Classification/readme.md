@@ -3,7 +3,7 @@
 In this project, you will work on multi-domain classification using the Random Forest classifier. The dataset is composed of five different domains, each having classes for numbers 0 to 9. Your task involves three main steps:
 
 <p align="center">
-  <img src="int.png" alt="Intro" width="700" />
+  <img src="int.png" alt="Intro" width="500" />
 </p>
 
 #### Part 1 - Digit Classification
@@ -11,7 +11,7 @@ In this project, you will work on multi-domain classification using the Random F
 In the first part, you will directly classify the numbers from the dataset using a Random Forest algorithm. Your challenge is to choose appropriate hyperparameters to achieve the desired accuracy. You need to demonstrate that your hyperparameter choices are effective. Additionally, you should calculate the confusion matrix to assess your model's performance.
 
 <p align="center">
-  <img src="1.png" alt="1" width="700" />
+  <img src="1.png" alt="1" width="500" />
 </p
   
 #### Part 2 - Domain and Digit Classification
