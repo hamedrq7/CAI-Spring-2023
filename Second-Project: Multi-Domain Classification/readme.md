@@ -24,7 +24,7 @@ In the second part, you must first use a Random Forest algorithm to classify the
   <img src="2.png" alt="2" width="700" />
 </p
 
-  
+### 
 ### Part 3 - Using Data from Other Domains in Digit Classification
 
 In real-world scenarios, data might contain noise or be influenced by other factors that could lead to incorrect domain classification and consequently affect the digit classification. In this section, you are to investigate whether using data from other domains in the training process of the digit classifier results in improved accuracy or not. You'll start by plotting the confusion matrix for the domain classifier and, based on the classifier's predictions, determine which digit classifier should be used for classification. Experiment with different coefficients (how much data from each domain should be used) to train and test your model. Report the results, improvements or lack thereof, and your reasoning for the findings.
