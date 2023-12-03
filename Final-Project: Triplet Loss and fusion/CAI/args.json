@@ -1,0 +1,1 @@
+{"experiment": "CAI", "domains": ["mnistm", "mnist", "usps", "svhn", "syn"], "seed": 70, "no_cuda": false, "batch_size": 128, "data_size": 12000, "margin": 0.001, "beta": 0.0, "embed_space": 256, "model_name": "fusion_model", "aux_loss": "myTripletLoss", "fusion_mode": "concat", "bn_feats": false, "dropout_feats": false, "lr": 0.001, "optim": "adam", "epochs": 10}

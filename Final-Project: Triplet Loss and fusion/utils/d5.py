@@ -1,15 +1,22 @@
+# relative import hacks (sorry)
+import inspect
+import os 
+import sys 
+currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(currentdir)
+sys.path.insert(0, parentdir) # for bash user
+os.chdir(parentdir) # for pycharm user
+
 from typing import List
 from scipy.io import loadmat
 import numpy as np
 import torchvision.transforms as transforms
 from PIL import Image
-from datasets_ import Dataset as tempDS
+from utils.datasets_ import Dataset as tempDS
 import torch.utils.data as data
 from tqdm import trange
 import pickle 
-from numpy import savez_compressed
-from numpy import save, load
-import os
+from numpy import savez_compressed, save, load
 import torch 
 from os.path import exists
 from sklearn.decomposition import PCA

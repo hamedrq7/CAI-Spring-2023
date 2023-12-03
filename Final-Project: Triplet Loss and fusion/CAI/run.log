@@ -1,0 +1,197 @@
+Expt: CAI
+The command that ran this script: main.py
+====> [CAI-Final-project] Time:   0.000s or 00:00:00
+Expt: CAI
+The command that ran this script: main.py
+datafiles to read:  {'train': './data/12000_train_mnistmnistmsvhnsynusps.npz', 'test': './data/12000_test_mnistmnistmsvhnsynusps.npz'}
+====> [CAI-Final-project] Time:   0.000s or 00:00:00
+Expt: CAI
+The command that ran this script: main.py
+datafiles to read:  {'train': './data/12000_train_mnistmnistmsvhnsynusps.npz', 'test': './data/12000_test_mnistmnistmsvhnsynusps.npz'}
+12000 4320
+mnist train X shape-> (12000, 3, 32, 32)
+mnist train y shape-> (12000,)
+mnist test X shape-> (4320, 3, 32, 32)
+mnist test y shape-> (4320,)
+12000 4320
+mnist_m train X shape-> (12000, 3, 28, 28)
+mnist_m train y shape-> (12000,)
+mnist_m test X shape-> (4320, 3, 28, 28)
+mnist_m test y shape-> (4320,)
+(32, 32, 3, 73257) (73257, 1) (32, 32, 3, 26032) (26032, 1)
+svhn train y shape before dense_to_one_hot-> (73257, 1)
+svhn train y shape after dense_to_one_hot-> (73257,)
+12000 4320
+svhn train X shape-> (12000, 3, 32, 32)
+svhn train y shape-> (12000,)
+svhn test X shape-> (4320, 3, 32, 32)
+svhn test y shape-> (4320,)
+12000 4320
+syn number train X shape-> (12000, 3, 32, 32)
+syn number train y shape-> (12000,)
+syn number test X shape-> (4320, 3, 32, 32)
+syn number test y shape-> (4320,)
+12000 4320
+usps train X shape-> (12000, 1, 28, 28)
+usps train y shape-> (12000,)
+usps test X shape-> (4320, 1, 28, 28)
+usps test y shape-> (4320,)
+phase train
+(60000, 3, 32, 32)
+(60000,)
+(60000,)
+(60000, 256)
+phase test
+(21600, 3, 32, 32)
+(21600,)
+(21600,)
+(21600, 256)
+train digit labels count: 
+[6398 7798 6460 6129 5870 5468 5559 5598 5322 5398]
+train domain labels count: 
+[12000 12000 12000 12000 12000]
+(60000, 3, 32, 32)
+images: (mean, max, min) -0.3365648 1.0 -1.0
+(60000,)
+(60000,)
+(60000, 256)
+features: (mean, max, min) -7.830064e-09 33.82949 -17.296532
+test digit labels count: 
+[2288 2845 2452 2091 2123 1970 1950 2035 1867 1979]
+test domain labels count: 
+[4320 4320 4320 4320 4320]
+(21600, 3, 32, 32)
+images: (mean, max, min) -0.3356378 1.0 -1.0
+(21600,)
+(21600,)
+(21600, 256)
+features: (mean, max, min) 0.0007343943 33.826206 -17.999256
+test digit labels count: 
+[2288 2845 2452 2091 2123 1970 1950 2035 1867 1979]
+test domain labels count: 
+[4320 4320 4320 4320 4320]
+(21600, 3, 32, 32)
+images: (mean, max, min) -0.3356378 1.0 -1.0
+(21600,)
+(21600,)
+(21600, 256)
+features: (mean, max, min) 0.0 0.0 0.0
+====> [CAI-Final-project] Time:  73.512s or 00:01:13
+Expt: CAI
+The command that ran this script: main.py
+datafiles to read:  {'train': './data/12000_train_mnistmnistmsvhnsynusps.npz', 'test': './data/12000_test_mnistmnistmsvhnsynusps.npz'}
+train digit labels count: 
+[6398 7798 6460 6129 5870 5468 5559 5598 5322 5398]
+train domain labels count: 
+[12000 12000 12000 12000 12000]
+(60000, 3, 32, 32)
+images: (mean, max, min) -0.3365648 1.0 -1.0
+(60000,)
+(60000,)
+(60000, 256)
+features: (mean, max, min) -7.830064e-09 33.82949 -17.296532
+test digit labels count: 
+[2288 2845 2452 2091 2123 1970 1950 2035 1867 1979]
+test domain labels count: 
+[4320 4320 4320 4320 4320]
+(21600, 3, 32, 32)
+images: (mean, max, min) -0.3356378 1.0 -1.0
+(21600,)
+(21600,)
+(21600, 256)
+features: (mean, max, min) 0.0007343943 33.826206 -17.999256
+test digit labels count: 
+[2288 2845 2452 2091 2123 1970 1950 2035 1867 1979]
+test domain labels count: 
+[4320 4320 4320 4320 4320]
+(21600, 3, 32, 32)
+images: (mean, max, min) -0.3356378 1.0 -1.0
+(21600,)
+(21600,)
+(21600, 256)
+features: (mean, max, min) 0.0 0.0 0.0
+invalid model name.
+====> [CAI-Final-project] Time:   3.633s or 00:00:03
+Expt: CAI
+The command that ran this script: main.py
+datafiles to read:  {'train': './data/12000_train_mnistmnistmsvhnsynusps.npz', 'test': './data/12000_test_mnistmnistmsvhnsynusps.npz'}
+train digit labels count: 
+[6398 7798 6460 6129 5870 5468 5559 5598 5322 5398]
+train domain labels count: 
+[12000 12000 12000 12000 12000]
+(60000, 3, 32, 32)
+images: (mean, max, min) -0.3365648 1.0 -1.0
+(60000,)
+(60000,)
+(60000, 256)
+features: (mean, max, min) -7.830064e-09 33.82949 -17.296532
+test digit labels count: 
+[2288 2845 2452 2091 2123 1970 1950 2035 1867 1979]
+test domain labels count: 
+[4320 4320 4320 4320 4320]
+(21600, 3, 32, 32)
+images: (mean, max, min) -0.3356378 1.0 -1.0
+(21600,)
+(21600,)
+(21600, 256)
+features: (mean, max, min) 0.0007343943 33.826206 -17.999256
+test digit labels count: 
+[2288 2845 2452 2091 2123 1970 1950 2035 1867 1979]
+test domain labels count: 
+[4320 4320 4320 4320 4320]
+(21600, 3, 32, 32)
+images: (mean, max, min) -0.3356378 1.0 -1.0
+(21600,)
+(21600,)
+(21600, 256)
+features: (mean, max, min) 0.0 0.0 0.0
+fusion_model(
+  (flatten): Flatten(start_dim=1, end_dim=-1)
+  (img_encoder): lenet_color(
+    (conv1): Conv2d(3, 16, kernel_size=(5, 5), stride=(1, 1))
+    (prelu1): PReLU(num_parameters=1)
+    (pool1): AvgPool2d(kernel_size=2, stride=2, padding=0)
+    (conv2): Conv2d(16, 32, kernel_size=(5, 5), stride=(1, 1))
+    (prelu2): PReLU(num_parameters=1)
+    (pool2): AvgPool2d(kernel_size=2, stride=2, padding=0)
+    (conv3): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1))
+    (prelu3): PReLU(num_parameters=1)
+    (fc1): Linear(in_features=576, out_features=256, bias=True)
+  )
+  (fc1): Linear(in_features=512, out_features=84, bias=True)
+  (prelu1): PReLU(num_parameters=1)
+  (fc2): Linear(in_features=84, out_features=10, bias=True)
+)
+training...
+exp  opti_adam-fusion_mode_concat-beta_0.0-margin_0.001-bn_on_features_False-dropout_False-embed_space_256-model_name_fusion_model-lr_0.001
+train total loss: 1.4696886359204955e-05, CE loss: 1.4696886359204955e-05, triplet_loss: 0.000672742516997018, acc: 0.7201833333333334
+test total loss: 2.2577290287894062e-05, CE loss: 2.2577290287894062e-05, triplet_loss: 0.0017990993768949924, acc: 0.8555092592592592
+test_missing total loss: 2.39897605481572e-05, CE loss: 2.39897605481572e-05, triplet_loss: 0.001804493589148353, acc: 0.8466666666666667
+train total loss: 6.576127516583678e-06, CE loss: 6.576127516583678e-06, triplet_loss: 0.0006021567125733897, acc: 0.8811833333333334
+test total loss: 1.656590911731003e-05, CE loss: 1.656590911731003e-05, triplet_loss: 0.0015418846571155476, acc: 0.8885185185185185
+test_missing total loss: 1.7532249828937307e-05, CE loss: 1.7532249828937307e-05, triplet_loss: 0.0015435739094401672, acc: 0.8833796296296296
+train total loss: 4.708496552138101e-06, CE loss: 4.708496552138101e-06, triplet_loss: 0.0005293408590423866, acc: 0.9119666666666667
+test total loss: 1.5131956419054156e-05, CE loss: 1.5131956419054156e-05, triplet_loss: 0.0013871048673997186, acc: 0.8998148148148147
+test_missing total loss: 1.6168304389404305e-05, CE loss: 1.6168304389404305e-05, triplet_loss: 0.0013868452926333106, acc: 0.8931944444444444
+train total loss: 3.694144518703074e-06, CE loss: 3.694144518703074e-06, triplet_loss: 0.0005232835784565072, acc: 0.9298000000000001
+test total loss: 1.3870898252114272e-05, CE loss: 1.3870898252114272e-05, triplet_loss: 0.0014789332560794855, acc: 0.9104166666666667
+test_missing total loss: 1.4688793407337146e-05, CE loss: 1.4688793407337146e-05, triplet_loss: 0.0014913366187332023, acc: 0.9043981481481481
+train total loss: 2.99410148263613e-06, CE loss: 2.99410148263613e-06, triplet_loss: 0.0005506740856102874, acc: 0.9429500000000001
+test total loss: 1.3854582711348872e-05, CE loss: 1.3854582711348872e-05, triplet_loss: 0.001639787447496958, acc: 0.9168518518518518
+test_missing total loss: 1.4544617137299173e-05, CE loss: 1.4544617137299173e-05, triplet_loss: 0.0016414948871411072, acc: 0.9108333333333333
+train total loss: 2.470513991415818e-06, CE loss: 2.470513991415818e-06, triplet_loss: 0.0005683557072512715, acc: 0.9528833333333334
+test total loss: 1.4283572758972292e-05, CE loss: 1.4283572758972292e-05, triplet_loss: 0.0016722943755113685, acc: 0.9154629629629629
+test_missing total loss: 1.4963199315319558e-05, CE loss: 1.4963199315319558e-05, triplet_loss: 0.0016761887123154728, acc: 0.909537037037037
+train total loss: 1.996530054167559e-06, CE loss: 1.996530054167559e-06, triplet_loss: 0.000595312456620358, acc: 0.9615833333333333
+test total loss: 1.3596775939305598e-05, CE loss: 1.3596775939305598e-05, triplet_loss: 0.0016648496025464996, acc: 0.9206944444444444
+test_missing total loss: 1.4219513326661252e-05, CE loss: 1.4219513326661252e-05, triplet_loss: 0.0016685266048532554, acc: 0.9141666666666666
+train total loss: 1.6625944490583551e-06, CE loss: 1.6625944490583551e-06, triplet_loss: 0.0006189547557058111, acc: 0.9680500000000001
+test total loss: 1.5179690740204107e-05, CE loss: 1.5179690740204107e-05, triplet_loss: 0.0017616475670843984, acc: 0.9181944444444444
+test_missing total loss: 1.5908933883284283e-05, CE loss: 1.5908933883284283e-05, triplet_loss: 0.001772767714233532, acc: 0.910787037037037
+train total loss: 1.3965900405392834e-06, CE loss: 1.3965900405392834e-06, triplet_loss: 0.0006493426905850951, acc: 0.9740833333333334
+test total loss: 1.5418106018958085e-05, CE loss: 1.5418106018958085e-05, triplet_loss: 0.0017232144158476413, acc: 0.9196296296296296
+test_missing total loss: 1.60228811227293e-05, CE loss: 1.60228811227293e-05, triplet_loss: 0.0017267821165858563, acc: 0.9125462962962962
+train total loss: 1.2323835406613926e-06, CE loss: 1.2323835406613926e-06, triplet_loss: 0.0006529216263424699, acc: 0.9770333333333334
+test total loss: 1.5941167145366604e-05, CE loss: 1.5941167145366604e-05, triplet_loss: 0.0018152930855150158, acc: 0.9184259259259259
+test_missing total loss: 1.6201302923920146e-05, CE loss: 1.6201302923920146e-05, triplet_loss: 0.0018171001478634512, acc: 0.912037037037037
+====> [CAI-Final-project] Time: 314.881s or 00:05:14

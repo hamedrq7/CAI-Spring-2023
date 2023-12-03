@@ -5,61 +5,72 @@ from torch.optim import optimizer
 from tqdm import trange
 from typing import List, Dict
 import numpy as np
-from d5 import get_data_loaders
 import torch.nn as nn 
 from tqdm import trange
-from utils import *
-from models import *
+import argparse
+import sys
+import json
 
-class myTripletLoss(nn.Module):
-    def __init__(self, device, margin: float = 0.2) -> None:
-        super().__init__()
-        self.margin = torch.tensor(margin)
-        self.device = device
+# relative import hacks (sorry)
+import inspect
+currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(currentdir)
+sys.path.insert(0, parentdir) # for bash user
+os.chdir(parentdir) # for pycharm user
 
-    def all_diffs(self, a, b):
-        # a, b -> [N, d]
-        # return -> [N, N, d]
-        return a[:, None] - b[None, :]
+from utils.d5 import get_data_loaders
+from utils.log import Logger, Timer, save_model, save_vars
+from utils.utils import *
+from utils.models import *
+import utils.loss_functions as loss_functions
 
-    def euclidean_dist(self, embed1, embed2):
-        # embed1, embed2 -> [N, d]
-        # return [N, N] -> # get a square matrix of all diffs, diagonal is zero
-        diffs = self.all_diffs(embed1, embed2) 
-        t1 = torch.square(diffs)
-        t2 = torch.sum(t1, dim=-1)
-        return torch.sqrt(t2 + 1e-12)
+parser = argparse.ArgumentParser(description='cai')
 
-    def batch_hard_triplet_loss(self, dists, labels):
-        # labels -> [N, 1]
-        # dists -> [N, N], square mat of all distances, 
-        # dists[i, j] is distance between sample[i] and sample[j]
+parser.add_argument('--experiment', type=str, default='CAI', metavar='E',
+                    help='directory to save the results')
+parser.add_argument('-l','--domains', nargs='+', default=['mnistm', 'mnist', 'usps', 'svhn', 'syn'], 
+                    help='Domains to use for train and evaluation (must choose at least one from mnist, mnistm, usps, svhn, syn)', 
+                    # required=True
+                    )
+parser.add_argument('--seed', type=int, default=70, metavar='S',
+                    help='random seed (default: 70)')
+parser.add_argument('--no-cuda', action='store_true', default=False,
+                    help='disable CUDA use')
+parser.add_argument('--batch-size', type=int, default=128, metavar='N',
+                    help='batch size for data (default: 128)')
+parser.add_argument('--data-size', type=int, default=12000, metavar='N',
+                    help='amount of data to use from each domains (default: 12000)')
+parser.add_argument('--margin', type=float, default=0.001,
+                    help='margin for triplet loss: (0.001)')
+parser.add_argument('--beta', type=float, default=0.0,
+                    help='coefficient for triplet loss: (0.0)')
+parser.add_argument('--embed_space', type=int, default=256,
+                    help='size of the embedding space: (256)')
+parser.add_argument('--model_name', type=str, default='fusion_model',
+                    help='model name to use, a class with the given name must exist in models.py')
+parser.add_argument('--aux_loss', type=str, default='myTripletLoss',
+                    help='auxilary loss to use for domains')
 
-    
-        same_identity_mask = torch.eq(labels[:, None], labels[None, :]) 
-        # [N, N], same_mask[i, j] = True when sample i and j have the same label
+# Add tensor fusion with the trick used in "https://aclanthology.org/D17-1115.pdf"
+parser.add_argument('--fusion_mode', type=str, default='concat',
+                    help='how to fuse representations with given features',
+                    choices=['concat', 'additive', 'multiplicative'])
+parser.add_argument('--bn_feats', action='store_true', default=False,
+                    help='if True, adds a batch norm layer in input space of given features, default: (False) ')
+parser.add_argument('--dropout_feats', action='store_true', default=False,
+                    help='if True, adds a dropout layer in the fusion layer, default: (False) ')
+parser.add_argument('--lr', type=float, default=0.001,
+                    help='learning rate, default: (0.001)')
+parser.add_argument('--optim', type=str, default='adam', metavar='M',
+                    choices=['adam', 'sgd'],
+                    help='optimizer (default: adam) - the sgd option is with momentum of 0.9')
+parser.add_argument('--epochs', type=int, default=10, metavar='E',
+                    help='number of epochs to train (default: 10)')
 
-        negative_mask = torch.logical_not(same_identity_mask)
-        # [N, N], negative_mask[i, j] = True when sample i and j have different label
 
-        positive_mask = torch.logical_xor(same_identity_mask, torch.eye(labels.shape[0], dtype=torch.bool).to(self.device))
-        # [N, N], same as same_identity mask, except diagonal is zero
+args = parser.parse_args()
 
-        furthest_positive, _ = torch.max(dists * (positive_mask.int()), dim=1)
-
-        closest_negative = torch.zeros_like(furthest_positive)
-        for i in range(dists.shape[0]):
-            closest_negative[i] = torch.min(dists[i, :][negative_mask[i, :]])    
-
-        diff = furthest_positive - closest_negative
-
-        return torch.max(diff + self.margin, torch.tensor(0.0))
-    
-    def forward(self, embeddings, labels):
-        dists = self.euclidean_dist(embeddings, embeddings)
-        losses = self.batch_hard_triplet_loss(dists, labels)
-
-        return torch.mean(losses)
+print(args)
 
 class Exp:
     def __init__(self, use_gpu: bool = True) -> None:
@@ -123,10 +134,12 @@ class Exp:
         ### set CE loss for digits
         self.ce_loss = nn.NLLLoss()
 
-        ### set triplet loss
+        ### set auxilary loss
         # 0.2 for mnist
-        self.triplet_loss = myTripletLoss(self.device, margin)
-        
+        lossC = getattr(loss_functions, args.aux_loss)
+        self.triplet_loss = lossC(self.device, margin)
+
+
         self.exp_name = f'opti_{optimzier_str}-fusion_mode_{fusion_mode}-beta_{beta}-margin_{margin}-bn_on_features_{bn_on_features}-dropout_{dropout}-embed_space_{embed_space}-model_name_{model_name}-lr_{lr}'        
         self.img_path = f'{exp_dir}/imgs/{self.exp_name}'
         self.path_save_model = f'{exp_dir}/models/{self.exp_name}'
@@ -240,97 +253,37 @@ class Exp:
 
         self.model = self.model.to(self.device)
 
-# sorted(['mnistm', 'mnist', 'usps', 'svhn', 'syn'])
-# full_dataloaders, num_domains = get_data_loaders(sorted(['mnistm', 'mnist', 'usps', 'svhn', 'syn']), batch_size= 64, size=1000) 
+# Reproducibility
+torch.backends.cudnn.benchmark = False
+torch.backends.cudnn.deterministic = True
+torch.manual_seed(args.seed)
+np.random.seed(args.seed)
+random.seed(args.seed)
 
-# exp = Exp(True)
-# exp.set_env(margin=0.5, beta=0.0, embed_space=256, model_name='fusion_model', fusion_mode='concat', bn_on_features=False, dropout=False, lr=0.01, full_dataloaders=full_dataloaders, optimzier_str='sgd')
-# exp.train(10)
+# Save outputs
+runPath = args.experiment
+mkdir(runPath)
+sys.stdout = Logger('{}/run.log'.format(runPath))
+print('Expt:', runPath)
+command_line_args = sys.argv
+command = ' '.join(command_line_args)
+print(f"The command that ran this script: {command}")
 
-# size 2
-# margin 2
-# beta 2
-# fusion_mode 2
-# bn 2
+# save args to run
+with open('{}/args.json'.format(runPath), 'w') as fp:
+    json.dump(args.__dict__, fp)
+torch.save(args, '{}/args.rar'.format(runPath))
 
-# Exp Adam
-for size in [12000]: 
-    for fusion_mode in ['concat']: 
-        for bn in [False]: 
-            for margin in [0.001]: # good for digits on 5 datasets: 0.01, 0.005, 0.001, 
-                for beta in [0.0]: # 0.0, 0.05
-                    for drp in [False]:
-                        for opt in ['sgd', 'adam']: 
-                            full_dataloaders, num_domains = get_data_loaders(sorted(['mnistm', 'mnist', 'usps', 'svhn', 'syn']), batch_size= 64, size=size) 
-                            exp = Exp(True)
-                            exp.set_env(margin=margin, beta=beta, embed_space=256, 
-                                model_name='fusion_model', fusion_mode=fusion_mode, 
-                                bn_on_features=bn, dropout=drp, lr=0.001, 
-                                full_dataloaders=full_dataloaders, optimzier_str=opt,
-                                exp_dir='Adam vs SGD')
-                            exp.train(10)
 
-for size in [12000]: 
-    for fusion_mode in ['concat']: 
-        for bn in [True]: 
-            for margin in [0.001]: # good for digits on 5 datasets: 0.01, 0.005, 0.001, 
-                for beta in [0.0]: # 0.0, 0.05
-                    for drp in [True]:
-                        for opt in ['sgd']: # , 'adam' 
-                            full_dataloaders, num_domains = get_data_loaders(sorted(['mnistm', 'mnist', 'usps', 'svhn', 'syn']), batch_size= 64, size=size) 
-                            exp = Exp(True)
-                            exp.set_env(margin=margin, beta=beta, embed_space=256, 
-                                model_name='fusion_model', fusion_mode=fusion_mode, 
-                                bn_on_features=bn, dropout=drp, lr=0.001, 
-                                full_dataloaders=full_dataloaders, optimzier_str=opt,
-                                exp_dir='Adam vs SGD')
-                            exp.train(10)
-# Exp1.2
-# for size in [12000]: 
-#     for fusion_mode in ['concat']: 
-#         for bn in [True]: 
-#             for margin in [0.001]: # good for digits on 5 datasets: 0.01, 0.005, 0.001, 
-#                 for beta in [0.0]: # 0.0, 0.05
-#                     for drp in [False]: 
-#                         full_dataloaders, num_domains = get_data_loaders(sorted(['mnistm', 'mnist', 'usps', 'svhn', 'syn']), batch_size= 64, size=size) 
-#                         exp = Exp(True)
-#                         exp.set_env(margin=margin, beta=beta, embed_space=256, 
-#                             model_name='fusion_model', fusion_mode=fusion_mode, 
-#                             bn_on_features=bn, dropout=drp, lr=0.01, 
-#                             full_dataloaders=full_dataloaders, optimzier_str='sgd',
-#                             exp_dir='exp1.2: effect of BN on baseline models, no Dropout')
-#                         exp.train(10)
-    
-# Exp1.3
-# for size in [12000]: 
-#     for fusion_mode in ['concat']: 
-#         for bn in [False]: 
-#             for margin in [0.001]: # good for digits on 5 datasets: 0.01, 0.005, 0.001, 
-#                 for beta in [0.0, 0.05]: 
-#                     for drp in [True]: 
-#                         full_dataloaders, num_domains = get_data_loaders(sorted(['mnistm', 'mnist', 'usps', 'svhn', 'syn']), batch_size= 64, size=size) 
-#                         exp = Exp(True)
-#                         exp.set_env(margin=margin, beta=beta, embed_space=256, 
-#                             model_name='fusion_model', fusion_mode=fusion_mode, 
-#                             bn_on_features=bn, dropout=drp, lr=0.01, 
-#                             full_dataloaders=full_dataloaders, optimzier_str='sgd',
-#                             exp_dir='exp1.3: effect of dropout on baseline models, no BN')
-#                         exp.train(10)
-    
+if __name__ == '__main__':
+    with Timer('CAI-Final-project') as t:      
+        full_dataloaders, num_domains = get_data_loaders(sorted(args.domains), batch_size= args.batch_size, size=args.data_size) 
+        exp = Exp(True if torch.cuda.is_available() and not args.no_cuda else False)
 
-# Exp1.4
-# for size in [12000]: 
-#     for fusion_mode in ['concat']: 
-#         for bn in [True]: 
-#             for margin in [0.001]: # good for digits on 5 datasets: 0.01, 0.005, 0.001, 
-#                 for beta in [0.0, 0.05]: 
-#                     for drp in [True]: 
-#                         full_dataloaders, num_domains = get_data_loaders(sorted(['mnistm', 'mnist', 'usps', 'svhn', 'syn']), batch_size= 64, size=size) 
-#                         exp = Exp(True)
-#                         exp.set_env(margin=margin, beta=beta, embed_space=256, 
-#                             model_name='fusion_model', fusion_mode=fusion_mode, 
-#                             bn_on_features=bn, dropout=drp, lr=0.01, 
-#                             full_dataloaders=full_dataloaders, optimzier_str='sgd',
-#                             exp_dir='exp1.4: effect of both dropout and BN on baseline models')
-#                         exp.train(10)
-    
+        exp.set_env(margin=args.margin, beta=args.beta, embed_space=args.embed_space, 
+            model_name=args.model_name, fusion_mode=args.fusion_mode, 
+            bn_on_features=args.bn_feats, dropout=args.dropout_feats, lr=args.lr, 
+            full_dataloaders=full_dataloaders, optimzier_str=args.optim,
+            exp_dir=args.experiment)
+        exp.train(args.epochs)
+
