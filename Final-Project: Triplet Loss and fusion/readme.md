@@ -1,13 +1,33 @@
-Desc
+This Folder contains the code for Final project of Computational Intelligence course at FUM, provided by Teaching assistant team. 
  
 # Requirements
-
+```matplotlib==3.5.2
+numpy==1.21.5
+Pillow==9.2.0
+Pillow==10.1.0
+scikit_learn==1.0.2
+scipy==1.9.1
+torch==1.13.1
+torchvision==0.14.1
+tqdm==4.64.1
+```
 
 ### Data acquisition: 
 download the data from https://drive.google.com/drive/folders/1TYnhCSMU1rQcAWqXYzsn-HBKYy-8IORY?usp=sharing and store it under the `./data/` directory. When loading data in `main.py`, the data proccesses automaticaly and stores the results in the `./data` directory. 
 (to genereate a different dataset from the original Digit-Five dataset, download the Digit-Five dataset from [here](https://drive.google.com/open?id=1A4RJOFj4BJkmliiEL7g9WzNIDUHLxfmm) and modify `store_digit_five()`)
 
 # Usage
+Make sure the requirements are satisfied in your environment, and relevant datasets are downloaded. For using all the domains of digit-five dataset and concatenation as the fusion mode, run
+```
+python main.py --domains mnist mnistm usps svhn syn --fusion_mode concat
+```
+Some of the more important hyperparameters are listed as follows: 
+- `domains`: domains to use for training and evaluation
+- `margin`: margin of triplet loss
+- `beta`: coefficient of triplet loss (or any other auxilary loss)
+- `embed_space`: size of embedding space (fused space)
+- `aux_loss`: the auxilary loss to add to cross entropy, to add new loss functions, add it to `loss_functions.py`
+- `fusion_mode`: how to fuse input features and network features
 
 # Project Description: 
 ## Dataset:
