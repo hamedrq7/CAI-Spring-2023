@@ -1,4 +1,4 @@
-This Folder contains the code for Final project of Computational Intelligence course at FUM, provided by Teaching assistant team. 
+This Folder contains the code for Final project of Computational Intelligence course at FUM, released by Teaching assistant team. A sample output is provided in `./CAI` folder.
  
 # Requirements
 ```matplotlib==3.5.2
